@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bun7gfr02x345"]
+
+[ext_resource type="Texture2D" uid="uid://douo1vj6nwm14" path="res://assets/sprites/environment/table.png" id="1_texture"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_table"]
+radius = 28.000004
+height = 88.0
+
+[node name="CasinoTable" type="StaticBody2D" unique_id=266171819]
+y_sort_enabled = true
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=717618505]
+texture = ExtResource("1_texture")
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079750535]
+position = Vector2(0, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_table")

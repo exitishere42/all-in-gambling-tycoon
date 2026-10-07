@@ -1,0 +1,328 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/minigames/slots_game.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/slot_reel_bg.png" id="2_reel_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/slot_lever_up.png" id="3_lever"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/slot_frame_overlay.png" id="4_frame"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silkscreen-Regular.ttf" id="5_font"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel.png" id="6_panel_tex"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_normal.png" id="7_btn_d_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_hover.png" id="8_btn_d_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_pressed.png" id="9_btn_d_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_normal.png" id="10_btn_g_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_hover.png" id="11_btn_g_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_pressed.png" id="12_btn_g_press"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_controls"]
+texture = ExtResource("6_panel_tex")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spin_norm"]
+texture = ExtResource("10_btn_g_norm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spin_hov"]
+texture = ExtResource("11_btn_g_hov")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spin_press"]
+texture = ExtResource("12_btn_g_press")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_step_norm"]
+texture = ExtResource("7_btn_d_norm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_step_hov"]
+texture = ExtResource("8_btn_d_hov")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btn_step_press"]
+texture = ExtResource("9_btn_d_press")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="SlotsGame" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.88)
+
+[node name="SlotRoot" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.0
+offset_top = -340.0
+offset_right = 408.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReelWindowBg" type="TextureRect" parent="SlotRoot"]
+layout_mode = 0
+offset_right = 816.0
+offset_bottom = 624.0
+texture = ExtResource("2_reel_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ReelWindow" type="Control" parent="SlotRoot"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 229.0
+offset_top = 246.0
+offset_right = 597.0
+offset_bottom = 456.0
+
+[node name="Reel1" type="Control" parent="SlotRoot/ReelWindow"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 108.0
+offset_bottom = 210.0
+
+[node name="SymbolRect" type="TextureRect" parent="SlotRoot/ReelWindow/Reel1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Reel2" type="Control" parent="SlotRoot/ReelWindow"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 130.0
+offset_right = 238.0
+offset_bottom = 210.0
+
+[node name="SymbolRect" type="TextureRect" parent="SlotRoot/ReelWindow/Reel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Reel3" type="Control" parent="SlotRoot/ReelWindow"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 260.0
+offset_right = 368.0
+offset_bottom = 210.0
+
+[node name="SymbolRect" type="TextureRect" parent="SlotRoot/ReelWindow/Reel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeverLayer" type="TextureRect" parent="SlotRoot"]
+layout_mode = 0
+offset_right = 816.0
+offset_bottom = 624.0
+texture = ExtResource("3_lever")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MachineFrameOverlay" type="TextureRect" parent="SlotRoot"]
+layout_mode = 0
+offset_right = 816.0
+offset_bottom = 624.0
+texture = ExtResource("4_frame")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeverClickArea" type="TextureButton" parent="SlotRoot"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 280.0
+offset_right = 770.0
+offset_bottom = 624.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+
+[node name="CloseButton" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 345.0
+offset_top = -325.0
+offset_right = 395.0
+offset_bottom = -275.0
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_step_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_step_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_step_press")
+text = "X"
+
+[node name="ControlsBar" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -88.0
+offset_right = 340.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_controls")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsBar"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="BetContainer" type="HBoxContainer" parent="ControlsBar/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="ControlsBar/HBoxContainer/BetContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.85, 0.9, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "BET:"
+
+[node name="BetMinusBtn" type="Button" parent="ControlsBar/HBoxContainer/BetContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_step_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_step_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_step_press")
+text = "-"
+
+[node name="BetValueLabel" type="Label" parent="ControlsBar/HBoxContainer/BetContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "$0.50"
+horizontal_alignment = 1
+
+[node name="BetPlusBtn" type="Button" parent="ControlsBar/HBoxContainer/BetContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_btn_step_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_btn_step_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btn_step_press")
+text = "+"
+
+[node name="SpinButton" type="Button" parent="ControlsBar/HBoxContainer"]
+custom_minimum_size = Vector2(110, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(1, 0.9, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_spin_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_spin_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_spin_press")
+text = "SPIN"
+
+[node name="VSeparator" type="VSeparator" parent="ControlsBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="WinLossLabel" type="Label" parent="ControlsBar/HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "$0.00"
+horizontal_alignment = 1
+vertical_alignment = 1

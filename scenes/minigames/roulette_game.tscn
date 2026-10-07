@@ -1,0 +1,486 @@
+[gd_scene load_steps=31 format=3]
+
+[ext_resource type="Script" path="res://scripts/minigames/roulette_game.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/roulette_wheel.png" id="2_wheel"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/roulette_ball.png" id="3_ball"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silkscreen-Regular.ttf" id="4_font"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel_roulette.png" id="5_panel_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_normal.png" id="6_close_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_hover.png" id="7_close_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_pressed.png" id="8_close_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel_screen.png" id="9_screen_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_gold_normal.png" id="10_green_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_gold_hover.png" id="11_green_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_gold_pressed.png" id="12_green_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_red_gold_normal.png" id="13_red_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_red_gold_hover.png" id="14_red_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_red_gold_pressed.png" id="15_red_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_black_gold_normal.png" id="16_black_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_black_gold_hover.png" id="17_black_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_black_gold_pressed.png" id="18_black_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_normal.png" id="19_dark_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_hover.png" id="20_dark_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_pressed.png" id="21_dark_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_gold_normal.png" id="22_gold_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_gold_hover.png" id="23_gold_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_gold_pressed.png" id="24_gold_press"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+texture = ExtResource("5_panel_bg")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_close_n"]
+texture = ExtResource("6_close_norm")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_close_h"]
+texture = ExtResource("7_close_hov")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_close_p"]
+texture = ExtResource("8_close_press")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_screen"]
+texture = ExtResource("9_screen_bg")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_n"]
+texture = ExtResource("10_green_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_h"]
+texture = ExtResource("11_green_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_green_p"]
+texture = ExtResource("12_green_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_n"]
+texture = ExtResource("13_red_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_h"]
+texture = ExtResource("14_red_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_red_p"]
+texture = ExtResource("15_red_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_black_n"]
+texture = ExtResource("16_black_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_black_h"]
+texture = ExtResource("17_black_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_black_p"]
+texture = ExtResource("18_black_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dark_n"]
+texture = ExtResource("19_dark_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dark_h"]
+texture = ExtResource("20_dark_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dark_p"]
+texture = ExtResource("21_dark_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gold_n"]
+texture = ExtResource("22_gold_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gold_h"]
+texture = ExtResource("23_gold_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gold_p"]
+texture = ExtResource("24_gold_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="RouletteGame" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.88)
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -260.0
+offset_right = 380.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+text = "CASINO ROULETTE"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_close_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_close_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_close_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+
+[node name="RouletteArea" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = -180.0
+offset_right = -125.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WheelRotor" type="Sprite2D" parent="Panel/RouletteArea"]
+position = Vector2(110, 110)
+texture = ExtResource("2_wheel")
+
+[node name="Ball" type="Sprite2D" parent="Panel/RouletteArea"]
+position = Vector2(110, 42)
+texture = ExtResource("3_ball")
+
+[node name="ResultBanner" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = 55.0
+offset_right = -125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_screen")
+
+[node name="ColorIndicator" type="ColorRect" parent="Panel/ResultBanner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.75, 0.25, 1)
+
+[node name="ResultNumberLabel" type="Label" parent="Panel/ResultBanner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TableGrid" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -185.0
+offset_right = 350.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="GreenBtn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxTexture_green_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_green_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_green_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "0 GRUEN (36x)"
+
+[node name="RedBtn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxTexture_red_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_red_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_red_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "ROT (2x)"
+
+[node name="BlackBtn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxTexture_black_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_black_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_black_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "SCHWARZ (2x)"
+
+[node name="EvenBtn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "GERADE (2x)"
+
+[node name="OddBtn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "UNGERADE (2x)"
+
+[node name="Doz1Btn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "1. DUTZEND [1-12] (3x)"
+
+[node name="Doz2Btn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "2. DUTZEND [13-24] (3x)"
+
+[node name="Doz3Btn" type="Button" parent="Panel/TableGrid"]
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "3. DUTZEND [25-36] (3x)"
+
+[node name="StatusLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 138.0
+offset_right = 350.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+text = "Wette: [RED] (2x)"
+horizontal_alignment = 1
+
+[node name="Controls" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -330.0
+offset_top = -80.0
+offset_right = 330.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BetContainer" type="HBoxContainer" parent="Panel/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="MinusBtn" type="Button" parent="Panel/Controls/BetContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "-"
+
+[node name="BetVal" type="Label" parent="Panel/Controls/BetContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.2, 1, 0.4, 1)
+text = "$25.00"
+horizontal_alignment = 1
+
+[node name="PlusBtn" type="Button" parent="Panel/Controls/BetContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "+"
+
+[node name="SpinBtn" type="Button" parent="Panel/Controls"]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_gold_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gold_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gold_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "KUGEL ROLLEN"

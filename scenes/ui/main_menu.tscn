@@ -1,0 +1,301 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/environment/casino_backdrop.png" id="2_backdrop"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/game_logo.png" id="3_logo"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/main_menu_player.png" id="4_player_art"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silkscreen-Regular.ttf" id="5_font"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_gold_normal.png" id="6_btn_g_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_gold_hover.png" id="7_btn_g_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_gold_pressed.png" id="8_btn_g_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_normal.png" id="9_btn_d_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_hover.png" id="10_btn_d_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_pressed.png" id="11_btn_d_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_red_gold_normal.png" id="14_btn_r_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_red_gold_hover.png" id="15_btn_r_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_red_gold_pressed.png" id="16_btn_r_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_checkbox_unchecked.png" id="12_cb_u"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_checkbox_checked.png" id="13_cb_c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_play_normal"]
+texture = ExtResource("6_btn_g_norm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_play_hover"]
+texture = ExtResource("7_btn_g_hov")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_play_pressed"]
+texture = ExtResource("8_btn_g_press")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dark_normal"]
+texture = ExtResource("9_btn_d_norm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dark_hover"]
+texture = ExtResource("10_btn_d_hov")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dark_pressed"]
+texture = ExtResource("11_btn_d_press")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exit_normal"]
+texture = ExtResource("14_btn_r_norm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exit_hover"]
+texture = ExtResource("15_btn_r_hov")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exit_pressed"]
+texture = ExtResource("16_btn_r_press")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="MainMenu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="CasinoBackground" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_backdrop")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DarkDimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.5)
+
+[node name="PlayerArt" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -280.0
+offset_right = -60.0
+offset_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_player_art")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 50.0
+offset_right = 620.0
+offset_bottom = -40.0
+grow_vertical = 2
+
+[node name="GameLogo" type="TextureRect" parent="LeftPanel"]
+texture_filter = 1
+layout_mode = 1
+offset_left = -10.0
+offset_right = 520.0
+offset_bottom = 150.0
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MenuContainer" type="VBoxContainer" parent="LeftPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -90.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="LeftPanel/MenuContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 52)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_play_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_play_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_play_pressed")
+text = "CASINO TYCOON"
+
+[node name="HighRollerButton" type="Button" parent="LeftPanel/MenuContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 0.9, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_pressed")
+text = "HIGH ROLLER"
+
+[node name="NewGameButton" type="Button" parent="LeftPanel/MenuContainer"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(300, 42)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_pressed")
+text = "NEW GAME"
+
+[node name="StatsLabel" type="Label" parent="LeftPanel/MenuContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.85, 0.9, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "$10.00"
+
+[node name="ModeContainer" type="VBoxContainer" parent="LeftPanel/MenuContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HardcoreCheck" type="CheckBox" parent="LeftPanel/MenuContainer/ModeContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 0.8, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_icons/checked = ExtResource("13_cb_c")
+theme_override_icons/unchecked = ExtResource("12_cb_u")
+text = "Hardcore Mode"
+
+[node name="CheatCheck" type="CheckBox" parent="LeftPanel/MenuContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.4, 0.9, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_icons/checked = ExtResource("13_cb_c")
+theme_override_icons/unchecked = ExtResource("12_cb_u")
+text = "Developer Cheat"
+
+[node name="ExitButton" type="Button" parent="LeftPanel/MenuContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 42)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.9, 0.9, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_exit_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_exit_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_exit_pressed")
+text = "EXIT"
+
+[node name="BottomRow" type="HBoxContainer" parent="LeftPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 14
+
+[node name="LangButton" type="Button" parent="LeftPanel/BottomRow"]
+texture_filter = 1
+custom_minimum_size = Vector2(70, 28)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxTexture_dark_normal")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dark_hover")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dark_pressed")
+text = "EN"
+
+[node name="DisclaimerLabel" type="Label" parent="LeftPanel/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.65, 0.7, 0.8, 0.85)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "Virtual play money only. No real money gambling."
+vertical_alignment = 1

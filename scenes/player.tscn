@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c0cg61e0b0yaf"]
+
+[ext_resource type="Script" uid="uid://c1p88i22vjndg" path="res://scripts/player/player.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dsnd8lpirbe7h" path="res://assets/sprites/player/player.png" id="2_texture"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3rb4u"]
+height = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 38.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1281876215]
+z_index = 10
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=454846340]
+texture = ExtResource("2_texture")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1025925742]
+position = Vector2(0, 2)
+rotation = 3.1415927
+shape = SubResource("CapsuleShape2D_3rb4u")
+
+[node name="InteractDetector" type="Area2D" parent="." unique_id=1772022058]
+position = Vector2(0, -6)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDetector" unique_id=930311280]
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.75, 1.75)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+limit_left = 35
+limit_top = 35
+limit_right = 1245
+limit_bottom = 980

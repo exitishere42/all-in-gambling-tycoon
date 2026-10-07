@@ -1,0 +1,365 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/hud_bottle.png" id="2_bottle_icon"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/hud_coin.png" id="3_coin_icon"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silkscreen-Regular.ttf" id="4_font"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel.png" id="5_pixel_panel"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_normal.png" id="6_btn_d_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_hover.png" id="7_btn_d_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_gold_pressed.png" id="8_btn_d_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/touch_btn_up.png" id="9_touch_up"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/touch_btn_down.png" id="10_touch_down"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/touch_btn_left.png" id="11_touch_left"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/touch_btn_right.png" id="12_touch_right"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/touch_btn_interact.png" id="13_touch_act"]
+[ext_resource type="Script" path="res://scripts/ui/virtual_joystick.gd" id="14_joystick_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/joystick_base.png" id="15_joystick_base"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/joystick_tip.png" id="16_joystick_tip"]
+[ext_resource type="PackedScene" path="res://scenes/ui/build_system_ui.tscn" id="17_build_ui"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_menu_norm"]
+texture = ExtResource("6_btn_d_norm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_menu_hov"]
+texture = ExtResource("7_btn_d_hov")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_menu_press"]
+texture = ExtResource("8_btn_d_press")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hud_plaque"]
+texture = ExtResource("5_pixel_panel")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+content_margin_left = 14.0
+content_margin_top = 6.0
+content_margin_right = 14.0
+content_margin_bottom = 6.0
+
+[node name="HUD" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="TopLeftContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 380.0
+offset_bottom = 52.0
+theme_override_constants/separation = 8
+
+[node name="MenuButton" type="Button" parent="TopLeftContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(80, 38)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_menu_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_menu_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_menu_press")
+text = "MENU"
+
+[node name="BuildButton" type="Button" parent="TopLeftContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(95, 38)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_menu_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_menu_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_menu_press")
+text = "BAUEN [B]"
+
+[node name="OpenCasinoButton" type="Button" parent="TopLeftContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(135, 38)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_menu_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_menu_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_menu_press")
+text = "CASINO ÖFFNEN"
+
+[node name="TopRightPill" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -460.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hud_plaque")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopRightPill"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 18
+
+[node name="ModeLabel" type="Label" parent="TopRightPill/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "HARDCORE"
+
+[node name="BottleBox" type="HBoxContainer" parent="TopRightPill/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BottleIcon" type="TextureRect" parent="TopRightPill/HBoxContainer/BottleBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_bottle_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BottlesLabel" type="Label" parent="TopRightPill/HBoxContainer/BottleBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.45, 0.95, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "0"
+
+[node name="VSeparator" type="VSeparator" parent="TopRightPill/HBoxContainer"]
+layout_mode = 2
+
+[node name="CashBox" type="HBoxContainer" parent="TopRightPill/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CoinIcon" type="TextureRect" parent="TopRightPill/HBoxContainer/CashBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_coin_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CashLabel" type="Label" parent="TopRightPill/HBoxContainer/CashBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "$10.00"
+
+[node name="CheatButton" type="Button" parent="TopRightPill/HBoxContainer"]
+custom_minimum_size = Vector2(80, 36)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 0.88, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_menu_norm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_menu_hov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_menu_press")
+text = "+100K"
+
+[node name="BankruptHint" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "Du bist pleite! Sammle leere Flaschen von den Tischen ($0.25 Pfand)!"
+horizontal_alignment = 1
+
+[node name="TouchControls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Joystick" type="Control" parent="TouchControls"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = -210.0
+offset_right = 260.0
+offset_bottom = -40.0
+grow_vertical = 0
+script = ExtResource("14_joystick_script")
+
+[node name="Base" type="TextureRect" parent="TouchControls/Joystick"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_joystick_base")
+expand_mode = 1
+
+[node name="Tip" type="TextureRect" parent="TouchControls/Joystick"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 47.0
+offset_right = 123.0
+offset_bottom = 123.0
+mouse_filter = 2
+texture = ExtResource("16_joystick_tip")
+expand_mode = 1
+
+[node name="ActionBtnContainer" type="Control" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -116.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ActionBtn" type="TouchScreenButton" parent="TouchControls/ActionBtnContainer"]
+texture_normal = ExtResource("13_touch_act")
+action = "interact"
+
+[node name="ActionLabel" type="Label" parent="TouchControls/ActionBtnContainer/ActionBtn"]
+offset_right = 76.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FloatingBanner" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 80.0
+offset_right = 300.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "CASINO GEÖFFNET!"
+horizontal_alignment = 1
+
+[node name="BottomInfoBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -460.0
+offset_top = -34.0
+offset_right = 460.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ObjectiveLabel" type="Label" parent="BottomInfoBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "Ziel: Säubere das Casino"
+
+[node name="VSep" type="VSeparator" parent="BottomInfoBar"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="BottomInfoBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 0.85)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "[WASD / ZQSD] Bewegen | [E / Space] Interagieren | [B] Baumodus"
+
+[node name="BuildSystemUI" parent="." instance=ExtResource("17_build_ui")]
+visible = false
+layout_mode = 1

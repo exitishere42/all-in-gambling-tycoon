@@ -1,0 +1,6 @@
+# Godot 4.x .gitignore
+.godot/
+*.translation
+*.tmp
+*.zip
+val_out.txt

@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/construction_store_dialog.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silkscreen-Regular.ttf" id="2_font"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel.png" id="3_panel"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_normal.png" id="4_close_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_hover.png" id="5_close_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_pressed.png" id="6_close_press"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("3_panel")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[node name="ConstructionStoreDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -240.0
+offset_right = 330.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bg")
+
+[node name="TopBar" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 18.0
+offset_right = 290.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Panel/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(1, 0.88, 0.35, 1)
+text = "BOB'S CASINO-BAUAMT"
+
+[node name="CashLabel" type="Label" parent="Panel/TopBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+text = "Dein Geld: $0.00"
+
+[node name="NoticeLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 50.0
+offset_right = 290.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.8, 0.85, 0.95, 1)
+text = "Wähle Renovierungen & Erweiterungen für dein Casino."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -160.0
+offset_right = 290.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="ItemsContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CloseBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 286.0
+offset_top = -226.0
+offset_right = 314.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_close_norm")
+texture_hover = ExtResource("5_close_hov")
+texture_pressed = ExtResource("6_close_press")
+ignore_texture_size = true
+stretch_mode = 5

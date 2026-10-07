@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<title>$GODOT_PROJECT_NAME</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+		<style>
+html, body, #canvas {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-touch-callout: none;
+}
+
+body {
+	color: #f1f5f9;
+	background-color: #0b0c10;
+	overflow: hidden;
+	touch-action: none;
+	font-family: 'Silkscreen', monospace, sans-serif;
+}
+
+#canvas {
+	display: block;
+}
+
+#canvas:focus {
+	outline: none;
+}
+
+/* Custom Casino Theme Loading Overlay */
+#status {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: radial-gradient(circle at center, #181b26 0%, #0a0b10 100%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+	transition: opacity 0.4s ease-out;
+}
+
+.splash-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	padding: 24px;
+	box-sizing: border-box;
+}
+
+.custom-splash-img {
+	max-width: 90vw;
+	max-height: 40vh;
+	image-rendering: pixelated;
+	filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.7));
+	animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+	0%, 100% { filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 10px rgba(212, 175, 55, 0.2)); transform: scale(1); }
+	50% { filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 20px rgba(212, 175, 55, 0.45)); transform: scale(1.02); }
+}
+
+.loading-text-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #ffd700;
+	font-size: 14px;
+	letter-spacing: 2px;
+	text-shadow: 2px 2px 0px #000;
+	text-transform: uppercase;
+}
+
+/* 9-Patch / Beveled Pixel Gold Progress Bar */
+.progress-outer-box {
+	width: 320px;
+	max-width: 80vw;
+	height: 22px;
+	background: #11131a;
+	border: 3px solid #d4af37;
+	box-shadow: inset 2px 2px 0px #000, 0 4px 12px rgba(0, 0, 0, 0.6);
+	position: relative;
+	padding: 2px;
+	box-sizing: border-box;
+}
+
+.progress-inner-fill {
+	height: 100%;
+	width: 0%;
+	background: linear-gradient(90deg, #d4af37 0%, #ffd700 50%, #fff176 100%);
+	box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+	transition: width 0.15s ease-out;
+}
+
+.progress-percent {
+	color: #94a3b8;
+	font-size: 11px;
+	margin-top: 6px;
+	letter-spacing: 1px;
+	text-shadow: 1px 1px 0px #000;
+}
+
+#status-notice {
+	display: none;
+	background-color: #5b1d28;
+	border: 2px solid #ef4444;
+	color: #fee2e2;
+	font-family: sans-serif;
+	font-size: 13px;
+	line-height: 1.4;
+	margin: 1rem 2rem;
+	padding: 1rem;
+	text-align: center;
+	max-width: 500px;
+	box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+}
+		</style>
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+		<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+		$GODOT_HEAD_INCLUDE
+	</head>
+	<body>
+		<canvas id="canvas">
+			Your browser does not support the canvas tag.
+		</canvas>
+
+		<noscript>
+			Your browser does not support JavaScript.
+		</noscript>
+
+		<div id="status">
+			<div class="splash-container">
+				<img id="status-splash" class="custom-splash-img" src="index.png" alt="All In: Gambling Tycoon">
+				
+				<div class="loading-text-container">
+					<span>LOADING...</span>
+				</div>
+
+				<div class="progress-outer-box" id="progress-container">
+					<div class="progress-inner-fill" id="progress-fill"></div>
+				</div>
+
+				<div class="progress-percent" id="progress-percent">0%</div>
+
+				<div id="status-notice"></div>
+			</div>
+		</div>
+
+		<script src="$GODOT_URL"></script>
+		<script>
+const GODOT_CONFIG = $GODOT_CONFIG;
+const GODOT_THREADS_ENABLED = false;
+const engine = new Engine(GODOT_CONFIG);
+
+(function () {
+	const statusOverlay = document.getElementById('status');
+	const progressFill = document.getElementById('progress-fill');
+	const progressPercent = document.getElementById('progress-percent');
+	const statusNotice = document.getElementById('status-notice');
+
+	let initializing = true;
+
+	function setStatusNotice(text) {
+		while (statusNotice.lastChild) {
+			statusNotice.removeChild(statusNotice.lastChild);
+		}
+		const lines = text.split('\n');
+		lines.forEach((line) => {
+			statusNotice.appendChild(document.createTextNode(line));
+			statusNotice.appendChild(document.createElement('br'));
+		});
+		statusNotice.style.display = 'block';
+	}
+
+	function displayFailureNotice(err) {
+		console.error(err);
+		if (err instanceof Error) {
+			setStatusNotice(err.message);
+		} else if (typeof err === 'string') {
+			setStatusNotice(err);
+		} else {
+			setStatusNotice('An unknown error occurred.');
+		}
+		initializing = false;
+	}
+
+	const missing = Engine.getMissingFeatures({
+		threads: GODOT_THREADS_ENABLED,
+	});
+
+	if (missing.length !== 0) {
+		const missingMsg = 'Error\nThe following features required to run on the Web are missing:\n';
+		displayFailureNotice(missingMsg + missing.join('\n'));
+	} else {
+		engine.startGame({
+			'onProgress': function (current, total) {
+				if (current > 0 && total > 0) {
+					const pct = Math.min(100, Math.round((current / total) * 100));
+					progressFill.style.width = pct + '%';
+					progressPercent.textContent = pct + '%';
+				} else {
+					progressFill.style.width = '10%';
+					progressPercent.textContent = '...';
+				}
+			},
+		}).then(() => {
+			statusOverlay.style.opacity = '0';
+			setTimeout(() => {
+				statusOverlay.remove();
+			}, 400);
+			initializing = false;
+		}, displayFailureNotice);
+	}
+}());
+		</script>
+	</body>
+</html>

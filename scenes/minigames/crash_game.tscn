@@ -1,0 +1,415 @@
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://scripts/minigames/crash_game.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/pixel_aviation_plane.png" id="2_plane"]
+[ext_resource type="FontFile" path="res://assets/fonts/Silkscreen-Regular.ttf" id="3_font"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel_aviation.png" id="4_panel_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel_screen.png" id="5_radar_frame"]
+[ext_resource type="Texture2D" path="res://assets/sprites/minigames/aviation_radar_bg.png" id="6_radar_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_normal.png" id="7_close_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_hover.png" id="8_close_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_close_pressed.png" id="9_close_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_gold_normal.png" id="10_gold_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_gold_hover.png" id="11_gold_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_gold_pressed.png" id="12_gold_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_normal.png" id="13_green_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_hover.png" id="14_green_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_green_pressed.png" id="15_green_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_normal.png" id="16_dark_norm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_hover.png" id="17_dark_hov"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_btn_dark_pressed.png" id="18_dark_press"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/pixel_panel_chip.png" id="19_chip_bg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
+texture = ExtResource("4_panel_bg")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_screen"]
+texture = ExtResource("5_radar_frame")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_close_n"]
+texture = ExtResource("7_close_norm")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_close_h"]
+texture = ExtResource("8_close_hov")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_close_p"]
+texture = ExtResource("9_close_press")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_step_n"]
+texture = ExtResource("16_dark_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_step_h"]
+texture = ExtResource("17_dark_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_step_p"]
+texture = ExtResource("18_dark_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_action_n"]
+texture = ExtResource("10_gold_norm")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_action_h"]
+texture = ExtResource("11_gold_hov")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_action_p"]
+texture = ExtResource("12_gold_press")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_box"]
+texture = ExtResource("19_chip_bg")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="CrashGame" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.88)
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -250.0
+offset_right = 360.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+text = "AVIATION CRASH"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_close_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_close_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_close_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+
+[node name="HistoryBar" type="PanelContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = -24.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_box")
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/HistoryBar"]
+layout_mode = 2
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+
+[node name="HistoryContainer" type="HBoxContainer" parent="Panel/HistoryBar/Scroll"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GameAreaFrame" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -172.0
+offset_right = 336.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_screen")
+
+[node name="GameArea" type="TextureRect" parent="Panel/GameAreaFrame"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_radar_bg")
+stretch_mode = 1
+
+[node name="PlaneSprite" type="Sprite2D" parent="Panel/GameAreaFrame/GameArea"]
+position = Vector2(70, 220)
+scale = Vector2(2, 2)
+texture = ExtResource("2_plane")
+
+[node name="MultiplierLabel" type="Label" parent="Panel/GameAreaFrame/GameArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -32.0
+offset_right = 200.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "1.00X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = 114.0
+offset_right = 330.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+text = "Warte auf Rundenstart..."
+horizontal_alignment = 1
+
+[node name="BetBar" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = -108.0
+offset_right = 336.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Bet1Section" type="PanelContainer" parent="Panel/BetBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_box")
+
+[node name="HBox" type="HBoxContainer" parent="Panel/BetBar/Bet1Section"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Panel/BetBar/Bet1Section/HBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/BetBar/Bet1Section/HBox/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.75, 0.8, 0.9, 1)
+text = "BET 1"
+
+[node name="Steppers" type="HBoxContainer" parent="Panel/BetBar/Bet1Section/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MinusBtn" type="Button" parent="Panel/BetBar/Bet1Section/HBox/VBox/Steppers"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_step_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_step_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_step_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "-"
+
+[node name="Bet1Val" type="Label" parent="Panel/BetBar/Bet1Section/HBox/VBox/Steppers"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.2, 1, 0.4, 1)
+text = "$10.00"
+horizontal_alignment = 1
+
+[node name="PlusBtn" type="Button" parent="Panel/BetBar/Bet1Section/HBox/VBox/Steppers"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_step_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_step_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_step_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "+"
+
+[node name="Bet1ActionBtn" type="Button" parent="Panel/BetBar/Bet1Section/HBox"]
+custom_minimum_size = Vector2(115, 52)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_action_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_action_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_action_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "BET"
+
+[node name="Bet2Section" type="PanelContainer" parent="Panel/BetBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_box")
+
+[node name="HBox" type="HBoxContainer" parent="Panel/BetBar/Bet2Section"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Panel/BetBar/Bet2Section/HBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/BetBar/Bet2Section/HBox/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.75, 0.8, 0.9, 1)
+text = "BET 2"
+
+[node name="Steppers" type="HBoxContainer" parent="Panel/BetBar/Bet2Section/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MinusBtn" type="Button" parent="Panel/BetBar/Bet2Section/HBox/VBox/Steppers"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_step_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_step_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_step_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "-"
+
+[node name="Bet2Val" type="Label" parent="Panel/BetBar/Bet2Section/HBox/VBox/Steppers"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.2, 1, 0.4, 1)
+text = "$100.00"
+horizontal_alignment = 1
+
+[node name="PlusBtn" type="Button" parent="Panel/BetBar/Bet2Section/HBox/VBox/Steppers"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_step_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_step_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_step_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "+"
+
+[node name="Bet2ActionBtn" type="Button" parent="Panel/BetBar/Bet2Section/HBox"]
+custom_minimum_size = Vector2(115, 52)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_action_n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_action_h")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_action_p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "BET"
