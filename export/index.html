@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All In: Gambling Tycoon - Mobile Portal</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0b0f19;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+  .container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .header {
+    text-align: center;
+    padding: 16px 0;
+  }
+  .badge {
+    display: inline-block;
+    background: #eab308;
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  h1 span { color: #facc15; }
+  p.subtitle {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .btn-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    background: #111827;
+    border: 2px solid #374151;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.1s, border-color 0.2s, background 0.2s;
+  }
+  .btn-card:active {
+    transform: scale(0.98);
+    background: #1f2937;
+  }
+  .btn-card.highlight {
+    border-color: #eab308;
+    background: #181d2d;
+  }
+  .icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+  .info h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #facc15;
+    margin-bottom: 2px;
+  }
+  .btn-card:not(.highlight) .info h2 {
+    color: #e2e8f0;
+  }
+  .info p {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+  .footer {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #64748b;
+  }
+  .footer a {
+    color: #facc15;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="badge">Mobile Server Portal</div>
+      <h1>ALL IN: <span>GAMBLING TYCOON</span></h1>
+      <p class="subtitle">Wähle eine Ansicht für dein Smartphone:</p>
+    </div>
+
+    <a href="game_presentation.html" class="btn-card highlight">
+      <div class="icon">📱</div>
+      <div class="info">
+        <h2>Präsentation ansehen (HTML)</h2>
+        <p>Interaktiver Pitch & Gameplay-Walkthrough optimiert für Mobile & Desktop.</p>
+      </div>
+    </a>
+
+    <a href="All_In_Gambling_Tycoon_Presentation.pdf" class="btn-card">
+      <div class="icon">📄</div>
+      <div class="info">
+        <h2>PDF herunterladen</h2>
+        <p>Druckreife 7-Seiten Pitch Deck PDF (ca. 2.3 MB).</p>
+      </div>
+    </a>
+
+    <a href="All_In_Gambling_Tycoon_Code.zip" class="btn-card">
+      <div class="icon">📦</div>
+      <div class="info">
+        <h2>Vollständigen Code herunterladen</h2>
+        <p>Komplettes Projekt-ZIP mit allen Godot-Szenen, Skripten & Assets (79 MB).</p>
+      </div>
+    </a>
+
+    <a href="web/index.html" class="btn-card">
+      <div class="icon">🎮</div>
+      <div class="info">
+        <h2>Web-Spiel direkt testen</h2>
+        <p>Starte das Spiel direkt im mobilen Browser via HTML5 / WebAssembly.</p>
+      </div>
+    </a>
+
+    <div class="footer">
+      GitHub Repository: <a href="https://github.com/exitishere42/all-in-gambling-tycoon" target="_blank">exitishere42/all-in-gambling-tycoon</a>
+    </div>
+  </div>
+</body>
+</html>
